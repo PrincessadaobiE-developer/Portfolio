@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ENEFE ADAOBI — Tech Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #1a003e;
+      --surface: #250050;
+      --card: #2d0060;
+      --border: #4a1a7a;
+      --accent: #c084fc;
+      --accent2: #f472b6;
+      --text: #f3e8ff;
+      --muted: #c4a8e0;
+      --display: 'Space Grotesk', sans-serif;
+      --body: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 2.5rem;
+      background: rgba(26,0,62,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--display);
+      font-weight: 700; font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.88rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: flex-start;
+      padding: 8rem 2.5rem 4rem;
+      max-width: 900px; margin: 0 auto;
+      position: relative;
+    }
+    .hero-eyebrow {
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--accent2);
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 700; line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.4rem;
+    }
+    .hero h1 span {
+      background: linear-gradient(110deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-bio {
+      font-size: 1.1rem; color: var(--muted);
+      max-width: 520px; line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn {
+      padding: 0.75rem 1.6rem;
+      border-radius: 8px;
+      font-family: var(--display);
+      font-weight: 600; font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #5a52e0; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* GRID DOTS BG */
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(ellipse at center, rgba(108,99,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 900px; margin: 0 auto;
+      padding: 5rem 2.5rem;
+    }
+    .section-label {
+      font-size: 0.75rem; letter-spacing: 0.18em;
+      text-transform: uppercase; font-weight: 600;
+      color: var(--accent); margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 700; letter-spacing: -0.02em;
+      margin-bottom: 2.8rem;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .skill-icon { font-size: 1.6rem; margin-bottom: 0.7rem; }
+    .skill-name {
+      font-family: var(--display);
+      font-weight: 600; font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+    }
+    .skill-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+    /* PROJECTS */
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .project-tag {
+      display: inline-block;
+      background: rgba(108,99,255,0.15);
+      color: var(--accent);
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.25rem 0.7rem; border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+    .project-title {
+      font-family: var(--display);
+      font-size: 1.3rem; font-weight: 700;
+      letter-spacing: -0.02em; margin-bottom: 0.7rem;
+    }
+    .project-desc {
+      color: var(--muted); font-size: 0.9rem;
+      line-height: 1.7; margin-bottom: 1.4rem;
+    }
+    .project-stack {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .stack-tag {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.75rem; padding: 0.2rem 0.65rem;
+      border-radius: 6px; font-weight: 500;
+    }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--accent2); font-size: 0.85rem; font-weight: 600;
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+    .project-link:hover { gap: 0.7rem; }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 600px) {
+      .about-grid { grid-template-columns: 1fr; }
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { gap: 1rem; }
+      .hero { padding: 7rem 1.2rem 3rem; }
+      section { padding: 3.5rem 1.2rem; }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    .about-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.6rem;
+    }
+    .about-card h3 {
+      font-family: var(--display);
+      font-size: 1rem; font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .about-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.65; }
+
+    /* CONTACT */
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+    }
+    .contact-box h3 {
+      font-family: var(--display);
+      font-size: 1.5rem; font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .contact-box p { color: var(--muted); margin-bottom: 2rem; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    /* DIVIDER */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 2.5rem;
+    }
+
+    /* FADE IN */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero > * {
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero > *:nth-child(2) { animation-delay: 0.2s; }
+    .hero > *:nth-child(3) { animation-delay: 0.3s; }
+    .hero > *:nth-child(4) { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">EA.</span>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Tech Explorer · Building with AI</p>
+  <h1>Hi, I'm <span>ENEFE ADAOBI</span></h1>
+  <p class="hero-bio">
+    A curious tech explorer passionate about technology and the art of building things on the web. I'm currently learning web development while creating real projects powered by Python and AI — driven by a love for problem-solving and a hunger to keep growing.
+  </p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">View My Work</a>
+    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">What I work with</p>
+  <h2 class="section-title">Skills &amp; Tools</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Microsoft Excel</div>
+      <div class="skill-desc">Data entry, formulas, spreadsheet organisation, and basic analysis.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">💻</div>
+      <div class="skill-name">HTML &amp; CSS</div>
+      <div class="skill-desc">Building and styling web pages with clean, readable markup.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-name">JavaScript</div>
+      <div class="skill-desc">Adding interactivity and logic to web projects.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-name">AI Tools</div>
+      <div class="skill-desc">Integrating AI-powered features into productivity applications.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🔍</div>
+      <div class="skill-name">Problem Solving</div>
+      <div class="skill-desc">Identifying user needs and building tools that address them directly.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📁</div>
+      <div class="skill-name">Data Management</div>
+      <div class="skill-desc">Organising and maintaining accurate records and datasets.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🐍</div>
+      <div class="skill-name">Python</div>
+      <div class="skill-desc">Building AI games, algorithm visualisers, and interactive tools.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Things I've built</p>
+  <h2 class="section-title">Projects</h2>
+  <div class="project-card">
+    <span class="project-tag">Featured Project</span>
+    <h3 class="project-title">AI Productivity Dashboard</h3>
+    <p class="project-desc">
+      A smart task management web app that tracks daily tasks, monitors completion rates, and delivers AI-powered productivity coaching. Users can toggle dark mode, add tasks, and receive real-time insights on their workflow efficiency.
+    </p>
+    <div class="project-stack">
+      <span class="stack-tag">HTML</span>
+      <span class="stack-tag">CSS</span>
+      <span class="stack-tag">JavaScript</span>
+      <span class="stack-tag">AI Integration</span>
+    </div>
+    <a href="https://princessadaobie-developer.github.io/productivity-dashboard/" target="_blank" class="project-link">
+      View Live Project →
+    </a>
+  </div>
+
+  <div class="project-card" style="margin-top:1.5rem;">
+    <span class="project-tag">Python · AI</span>
+    <h3 class="project-title">Nim Game AI</h3>
+    <p class="project-desc">
+      A Python implementation of the classic Nim strategy game featuring an unbeatable AI opponent. The AI applies optimal game theory logic to always make the best possible move — a practical demonstration of applied artificial intelligence in an interactive format.
+    </p>
+    <div class="project-stack">
+      <span class="stack-tag">Python</span>
+      <span class="stack-tag">Game Theory</span>
+      <span class="stack-tag">AI Strategy</span>
+    </div>
+    <a href="https://github.com/PrincessadaobiE-developer/NimGameAI" target="_blank" class="project-link">
+      View on GitHub →
+    </a>
+  </div>
+
+  <div class="project-card" style="margin-top:1.5rem;">
+    <span class="project-tag">Python · Algorithm Visualisation</span>
+    <h3 class="project-title">A* Pathfinding Visualizer</h3>
+    <p class="project-desc">
+      An interactive grid-based tool that animates the A* pathfinding algorithm in real time using Python and Pygame. Users can place start and end points, draw walls, and watch the algorithm intelligently navigate the shortest path — making complex computer science concepts visual and accessible.
+    </p>
+    <div class="project-stack">
+      <span class="stack-tag">Python</span>
+      <span class="stack-tag">Pygame</span>
+      <span class="stack-tag">A* Algorithm</span>
+      <span class="stack-tag">Data Structures</span>
+    </div>
+    <a href="https://github.com/PrincessadaobiE-developer/Pathfinding-Visualizer" target="_blank" class="project-link">
+      View on GitHub →
+    </a>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">A bit about me</p>
+  <h2 class="section-title">About</h2>
+  <div class="about-grid">
+    <div class="about-card">
+      <h3>🎯 My Goal</h3>
+      <p>To grow as a tech professional by contributing to real projects, learning from experienced teams, and building tools that make a genuine difference to people's daily work.</p>
+    </div>
+    <div class="about-card">
+      <h3>🌱 Currently Learning</h3>
+      <p>Deepening my knowledge of JavaScript, exploring how AI can be integrated into everyday applications, and improving my data skills through hands-on projects.</p>
+    </div>
+    <div class="about-card">
+      <h3>💡 What Drives Me</h3>
+      <p>I'm passionate about using technology to solve practical problems — whether that's organising data more efficiently or building tools that boost productivity.</p>
+    </div>
+    <div class="about-card">
+      <h3>🤝 How I Work</h3>
+      <p>Detail-oriented, eager to learn, and comfortable picking up new tools quickly. I enjoy collaborating with others and contributing positively to team environments.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Let's connect</p>
+  <h2 class="section-title">Get In Touch</h2>
+  <div class="contact-box">
+    <h3>Open to Tech Internship Opportunities</h3>
+    <p>Whether you have a project, opportunity, or just want to say hello — my inbox is always open.</p>
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a href="https://github.com/princessadaobie-developer" target="_blank" class="btn btn-outline">GitHub Profile</a>
+      <a href="mailto:enefeadaobi16@gmail.com" class="btn btn-primary">Say Hello</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; built by ENEFE ADAOBI · 2025</p>
+</footer>
+
+</body>
+</html>
