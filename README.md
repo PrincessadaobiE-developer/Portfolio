@@ -8,7 +8,7 @@ A personal portfolio website built to showcase my projects, skills, and journey 
 
 ## 👩🏽‍💻 About Me
 
-I'm a curious tech explorer passionate about technology and building things on the web. I'm currently learning web development while creating real projects powered by Python and AI — driven by a love for problem-solving and a hunger to keep growing.
+I'm a curious tech explorer passionate about technology and building things on the web. I'm currently exploring AI Automation while creating real projects powered by Python and AI — driven by a love for problem-solving and a hunger to keep growing.
 
 ---
 
