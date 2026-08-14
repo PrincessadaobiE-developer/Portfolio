@@ -41,17 +41,6 @@ I'm a curious tech explorer passionate about technology and building things on t
 
 ---
 
-## 🚀 Getting Started
-
-To run locally, simply download or clone this repo and open `index.html` in your browser — no installs needed.
-
-```bash
-git clone https://github.com/PrincessadaobiE-developer/portfolio.git
-cd portfolio
-# Open index.html in your browser
-```
-
----
 
 ## 📬 Contact
 
