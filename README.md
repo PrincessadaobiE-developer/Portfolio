@@ -2,7 +2,7 @@
 
 A personal portfolio website built to showcase my projects, skills, and journey as a tech explorer.
 
-🔗 **Live Site:** [princessadaobie-developer.github.io/portfolio](https://princessadaobie-developer.github.io/portfolio)
+🔗 **Live Site:** [princessadaobie-developer.github.io/portfolio/](https://princessadaobie-developer.github.io/Portfolio/)
 
 ---
 
